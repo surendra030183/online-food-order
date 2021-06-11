@@ -1,0 +1,28 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: restaurant-service
+  data:
+    mongodb:
+      #uri: mongodb://localhost:27017/food_order
+      uri: mongodb+srv://fosuser:fospassword@fos-cluster-0.ycnnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+  cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers:
+          - localhost:9092
+          auto-create-topics: true
+      bindings:
+        menu-item-output:
+         destination: item-details-topic
+         content-type: application/json
+         group: item-group
+eureka: 
+   client: 
+      serviceUrl: 
+         #defaultZone: http://7fb6b1eda5c4445eaf6a.eastus.aksapp.io/eureka 
+         defaultZone: http://localhost:8081/eureka
+         

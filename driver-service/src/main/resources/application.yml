@@ -1,0 +1,17 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: driver-service
+  data:
+    mongodb:
+      #uri: mongodb://localhost:27017/food_order
+      uri: mongodb+srv://fosuser:fospassword@fos-cluster-0.ycnnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+freedriver:
+  distance: 5 
+eureka: 
+   client: 
+      serviceUrl: 
+         #defaultZone: http://7fb6b1eda5c4445eaf6a.eastus.aksapp.io/eureka 
+         defaultZone: http://localhost:8081/eureka       

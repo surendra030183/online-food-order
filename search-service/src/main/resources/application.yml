@@ -1,0 +1,40 @@
+elasticsearch:
+  host: enterprise-search-deployment-e4a55d.es.westus2.azure.elastic-cloud.com
+  userName: elastic
+  passWord: Qf32Hd231kQvAsdc9BDZDlyR
+  port: 9243
+  items:
+    type: items
+  index:
+    name: items_index
+spring:
+  application:
+    name: search-service
+  cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers:
+          - localhost:9092
+      bindings:
+        menu-item-output:
+         binder: kafka
+         destination: item-details-topic
+         content-type: application/json
+         group: item-group
+  data:
+    elasticsearch:
+      
+    #  cluster-nodes: 
+      #cluster-name: 3efc4a911e7148928c9e3db090
+      repositories:
+        enabled: true
+server:
+  port: 8086
+  
+eureka: 
+   client: 
+      serviceUrl: 
+         #defaultZone: http://7fb6b1eda5c4445eaf6a.eastus.aksapp.io/eureka 
+         defaultZone: http://localhost:8081/eureka
